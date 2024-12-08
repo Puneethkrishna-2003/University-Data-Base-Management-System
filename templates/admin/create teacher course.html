@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/adminReg.css">
+</head>
+<body>
+    <div class="college-background-overlay">
+        <div class="container">
+            <form class="student-form" autocomplete="off">
+                <h1>Add course for teacher</h1>
+                <div class="section course-info">
+                    <h2>Course Info</h2>
+                    <label for="department">Department Name *</label><br>
+                    <select id="department" name="department" required><br>
+                        <option value="" disabled selected>Select</option><br>
+                        <option value="department1">CS</option>
+                        <option value="department2">ME</option>
+                    </select><br>
+
+                    <label for="semester">Course Name *</label><br>
+                    <select id="semester" name="semester" required><br>
+                        <option value=""disabled selected>Select Course</option><br>
+                        <option value="semester1">Course 1</option><br>
+                        <option value="semester2">Course 2</option><br>
+                    </select><br>
+
+                    
+                    <label for="courseInstructor">Course Instructor *</label><br>
+                    <select name="selectTeacher" id="selectTeacher">
+                        <option value="" disabled selected>Select Instructor</option>
+                        <!-- Populate teachers from database -->
+                    </select><br>
+
+
+                    <label for="semester">Semester *</label><br>
+                    <select id="semester" name="semester" required><br>
+                        <option value=""disabled selected>Select Semester</option><br>
+                        <option value="semester1">Semester 1</option><br>
+                        <option value="semester2">Semester 2</option><br>
+                    </select><br>
+
+                    <label for="section">Section *</label><br>
+                    <select id="section" name="section" required><br>
+                        <option value=""disabled selected>Select Section</option><br>
+                        <option value="section1">A</option><br>
+                        <option value="section2">B</option><br>
+                    </select><br>
+
+
+                </div>
+                <div class="submit_btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

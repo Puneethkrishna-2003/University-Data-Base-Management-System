@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile</title>
+    <link rel="stylesheet" href="../../static/styles.css">
+    <link rel="stylesheet" href="../../static/timetable.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="leftNavBar">
+            <button><i class="fa-duotone fa-user"></i><a href="teachersProfile.html">my profile </a></button>
+
+            <ul>
+                    <li><i class="fa-duotone fa-screen-users"></i><a style="cursor: pointer;">manage students</a></li>
+                    <div class="hr"><hr></div>
+                    <li><i class="fa-duotone fa-calendar-users"></i><a href="teacherTimeTable.html">time table</a></li>
+                    <div class="hr"><hr></div>
+                    <li><i class="fa-duotone fa-books"></i><a href="teacher subject.html">subjects</a></li>
+                    <div class="hr"><hr></div>
+
+            </ul>
+
+            <div class="edit"> <i class="fa-duotone fa-edit"></i>edit Marks</div>
+
+        </div>
+
+        <div class="rightNavBar">
+            <div class="wish">Welcome, Teacher!</div>
+            <div class="sectionFrame">
+                <div class="section1" id="section1">a section</div>
+                <div class="section2" id="section2">b section</div>
+                <div class="section3" id="section3">c section</div>
+            </div>
+
+
+            <div class="A_sectionList">
+
+                <div class="allStudents">
+                    <div class="list">
+                        <h1> "A" section Attendance</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Register Number</th>
+                                    <th>Student Name</th>
+                                    <th>1st Internal Marks</th>
+                                    <th>2nd Internal Marks</th>
+                                    <th>Average Marks</th>
+                                    <th>Present</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-transform: uppercase;">4bd23cs410</td>
+                                    <td>PuneethKrishna S Rakunde</td>
+                                    <td>18</td>
+                                    <td>20</td>
+                                    <td>19</td>
+                                    <td class="present" style="font-size: 45px; cursor: pointer; user-select: none;" >+</td>
+                                    <td>10</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+
+            <div class="B_sectionList">
+
+                <div class="allStudents">
+                    <div class="list">
+                        <h1> "B" section Attendance</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Register Number</th>
+                                    <th>Student Name</th>
+                                    <th>1st Internal Marks</th>
+                                    <th>2nd Internal Marks</th>
+                                    <th>Average Marks</th>
+                                    <th>Present</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-transform: uppercase;">4bd23cs410</td>
+                                    <td>PuneethKrishna S Rakunde</td>
+                                    <td>18</td>
+                                    <td>20</td>
+                                    <td>19</td>
+                                    <td class="present" style="font-size: 45px; cursor: pointer; user-select: none;" >+</td>
+                                    <td>10</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="C_sectionList">
+
+                <div class="allStudents">
+                    <div class="list">
+                        <h1> "C" section Attendance</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Register Number</th>
+                                    <th>Student Name</th>
+                                    <th>1st Internal Marks</th>
+                                    <th>2nd Internal Marks</th>
+                                    <th>Average Marks</th>
+                                    <th>Present</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-transform: uppercase;">4bd23cs410</td>
+                                    <td>PuneethKrishna S Rakunde</td>
+                                    <td>18</td>
+                                    <td>20</td>
+                                    <td>19</td>
+                                    <td class="present" style="font-size: 45px; cursor: pointer; user-select: none;" >+</td>
+                                    <td>10</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+            
+        </div>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.section1, .section2, .section3');
+        const timetables = document.querySelectorAll('.A_sectionList, .B_sectionList, .C_sectionList');
+
+        sections.forEach((section, index) => {
+            section.addEventListener('click', () => { 
+                timetables.forEach(timetable => {
+                    timetable.style.display = 'none';
+                });
+                timetables[index].style.display = 'block';
+            });
+        });
+
+
+        // Calculate average marks for each student
+        const studentElements = document.querySelectorAll('.student');
+
+        studentElements.forEach(studentElement => {
+            const fNternal = parseFloat(studentElement.querySelector('.fNternal').textContent);
+            const sNternal = parseFloat(studentElement.querySelector('.sNternal').textContent);
+            const average = (fNternal + sNternal) / 2;
+            studentElement.querySelector('.averageMarks').textContent = average.toFixed(2); // Display average with 2 decimal places
+        });
+
+        // Extract and sort register numbers
+        const studentArrange = document.querySelectorAll('.student');
+
+        const registerNumbers = Array.from(studentArrange, student => student.querySelector('.registerNumber').textContent);
+        const sortedRegisterNumbers = registerNumbers.sort();
+
+        studentArrange.forEach((studentElement, index) => {
+            studentElement.querySelector('.registerNumber').textContent = sortedRegisterNumbers[index];
+        });
+
+
+        // Get the contenteditable elements
+        const fNternalElement = document.querySelector('.fNternal');
+        const sNternalElement = document.querySelector('.sNternal');
+
+        // Load saved content from local storage
+        const savedFInternal = localStorage.getItem('fNternal');
+        const savedSInternal = localStorage.getItem('sNternal');
+
+        // Set initial content or load saved content
+        fNternalElement.textContent = savedFInternal || fNternalElement.textContent;
+        sNternalElement.textContent = savedSInternal || sNternalElement.textContent;
+
+        // Save content when it changes
+        fNternalElement.addEventListener('input', () => {
+            localStorage.setItem('fNternal', fNternalElement.textContent);
+        });
+
+        sNternalElement.addEventListener('input', () => {
+            localStorage.setItem('sNternal', sNternalElement.textContent);
+        });
+    </script>
+
+</body>
+</html>
