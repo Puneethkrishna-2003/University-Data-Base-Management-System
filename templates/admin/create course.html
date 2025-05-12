@@ -1,45 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/adminReg.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../../static/adminReg.css" />
+  </head>
+  <body>
     <div class="college-background-overlay">
-        <div class="container">
-            <form class="student-form" autocomplete="off">
-                <h1>COURSE FORM</h1>
-                <div class="section course-info">
-                    <h2>Course Info</h2>
-                    <label for="department">Department Name *</label><br>
-                    <select id="department" name="department" required><br>
-                        <option value="" disabled selected>Select</option><br>
-                        <option value="department1">CS</option>
-                        <option value="department2">ME</option>
-                    </select><br>
-                    <label for="semester">Semester *</label><br>
-                    <select id="semester" name="semester" required><br>
-                        <option value=""disabled selected>Select</option><br>
-                        <option value="semester1">Semester 1</option><br>
-                        <option value="semester2">Semester 2</option><br>
-                    </select><br>
+      <div class="container">
+        <form class="student-form" autocomplete="off">
+          <h1>COURSE FORM</h1>
+          <div class="section course-info">
+            <h2>Course Info</h2>
+            <label for="department">Department Name *</label><br />
+            <select id="department" name="department" required>
+              <br />
+              <option value="" disabled selected>Select</option>
+              <br />
+              <option value="department1">CS</option>
+              <option value="department2">ME</option></select
+            ><br />
+            <label for="semester">Semester *</label><br />
+            <select id="semester" name="semester" required>
+              <br />
+              <option value="" disabled selected>Select</option>
+              <br />
+              <option value="semester1">Semester 1</option>
+              <br />
+              <option value="semester2">Semester 2</option>
+              <br /></select
+            ><br />
 
+            <label for="courseName">Course Name *</label><br />
+            <input
+              type="text"
+              id="courseName"
+              name="courseName"
+              required
+            /><br />
 
-                    <label for="courseName">Course Name *</label><br>
-                    <input type="text" id="courseName" name="courseName" required><br>
+            <label for="courseCode">Course Code *</label><br />
+            <input
+              type="text"
+              id="courseCode"
+              name="courseCode"
+              required
+            /><br />
+          </div>
 
-                    <label for="courseCode">Course Code *</label><br>
-                    <input type="text" id="courseCode" name="courseCode" required><br>
-
-                </div>
-
-                <div class="submit_btn">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+          <div class="submit_btn">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
-</body>
+    <script>
+      $(document).ready(function () {
+        $("#department").change(function () {
+          var departmentName = $(this).val();
+          $.ajax({
+            url: "/get_semesters/" + departmentName,
+            method: "GET",
+            success: function (data) {
+              var semesters = data.semesters;
+              var $semesterSelect = $("#semester");
+              $semesterSelect.empty();
+              $semesterSelect.append(
+                '<option value="" disabled selected>Select</option>'
+              );
+              semesters.forEach(function (semester) {
+                $semesterSelect.append(
+                  '<option value="' + semester + '">' + semester + "</option>"
+                );
+              });
+            },
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
